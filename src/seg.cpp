@@ -32,9 +32,12 @@ int main(int argc, char* argv[]) {
 		vector<vector<string> > results;
 		for (int file_num = 3; file_num < argc; file_num++) {
 			lines.clear();
-			results.clear();
 			load_text(argv[file_num], lines);
-			seg(state, lines, gen, results);
+			for (int i = 0; i < 5; i++) {
+				results.clear();
+				seg(state, lines, gen, results);
+			}
+
 			save_seg(os, results);
 		}
 		os.close();
@@ -90,7 +93,7 @@ int choose_candid(vector<pair<string, long> >& candid, long& random){
 	int maxnum = candid.size();
 	int index = 0;
 	for (int idx = 0; idx < maxnum; idx++) {
-		if (candid[idx].second > random) {
+		if (candid[idx].second >= random) {
 			index = idx;
 			return index;
 		}
