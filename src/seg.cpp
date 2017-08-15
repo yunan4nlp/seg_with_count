@@ -33,15 +33,15 @@ int main(int argc, char* argv[]) {
 		for (int file_num = 3; file_num < argc; file_num++) {
 			lines.clear();
 			load_text(argv[file_num], lines);
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 4; i++) {
 				results.clear();
 				seg(state, lines, gen, results);
+				save_seg(os, results);
 			}
-
-			save_seg(os, results);
 		}
 		os.close();
 		cout << "finish.." << endl;
+		getchar();
 	}
 	else
 		cout << argv[2] << "open error." << endl;
